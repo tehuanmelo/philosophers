@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_nbr.c                                      :+:      :+:    :+:   */
+/*   ft_atoi_v2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 11:59:22 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/29 20:18:16 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/31 00:05:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* This version of the atoi function also checks whatever is after the last 
 number, if detects any character other than a number returns zero. */
 
-#include "../inc/libft.h"
+#include "../inc/philo.h"
 
-int	ft_atoi_nbr(const char *str)
+int	ft_atoi_v2(const char *str)
 {
 	long	res;
 	int		sign;

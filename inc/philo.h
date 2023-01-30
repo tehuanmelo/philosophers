@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/29 22:34:47 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/31 00:06:02 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <limits.h>
+
+int	ft_atoi_v2(const char *str);
 
 # endif
