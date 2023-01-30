@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/30 23:46:12 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/31 00:02:51 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void *philo_routine(void *arg)
 
 int main(int ac, char **av)
 {
+    (void)ac;
+    (void)av;
     table_t table;
     set_table(&table, 2, 4, 2, 2);
 
