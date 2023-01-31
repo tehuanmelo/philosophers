@@ -1,6 +1,7 @@
 NAME = philo
 SRCFILES =\
-main.c
+main.c\
+ph_actions.c
 vpath %.c src
 OBJPATH = obj/
 SRCPATH = src/

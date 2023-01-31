@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/31 11:13:15 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/31 20:03:17 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,32 @@
 # include <limits.h>
 
 
-typedef struct  table_s
+typedef struct      table_s
 {
-   int          nbr_of_philos;
-   int          nbr_of_forks;
-   int          time_to_eat;
-   int          time_to_die;
-   int          time_to_sleep;
-   int          nbr_of_meals;
+    int             nbr_of_philos;
+    int             nbr_of_forks;
+    int             time_to_eat;
+    int             time_to_die;
+    int             time_to_sleep;
+    int             nbr_of_meals;
+    pthread_mutex_t mutex_fork;
+
+    
+
 }               table_t;
 
-typedef struct  philo_s
+typedef struct      philo_s
 {
-    int         id;
-    pthread_t   thread;
-    int         rigth_fork;
-    int         *left_fork;
-    table_t     *dinner_info;
-}               philo_t;
+    int             id;
+    int             rigth_fork;
+    int             *left_fork;
+    int             nb_of_meals;
+    table_t         *dinner_info;
+    pthread_t       thread;
+}                   philo_t;
 
-int	ft_atoi_v2(const char *str);
+int	    ft_atoi_v2(const char *str);
+void    eating(philo_t *philo);
+void    sleeping(philo_t *philo);
 
 # endif
