@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/31 00:02:51 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/31 14:11:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,32 @@
 number_of_philosophers time_to_die time_to_eat time_to_sleep
 [number_of_times_each_philosopher_must_eat] */
 
-typedef struct philo_s
+void *philo_routine(void *arg)
 {
-    pthread_t thread;
-    int rigth_fork;
-}philo_t;
+    printf("Philo %d just sited on the table\n", ((philo_t *)arg)->id);
+    return NULL;
+}
 
-typedef struct table_s
+philo_t *created_philos(table_t *table)
 {
-   int  nbr_of_philos;
-   int  nbr_of_forks;
-   int  time_to_eat;
-   int  time_to_die;
-   int  time_to_sleep;
-   int  nbr_of_meals;
-   pthread_t *philosophers;
-}table_t;
+    int i;
+    philo_t *philosophers;
+
+    philosophers = malloc(sizeof(philo_t) * table->nbr_of_philos);
+    i = 0;
+    while (i < table->nbr_of_philos)
+    {
+        philosophers[i].id = i + 1;
+        philosophers[i].dinner_info = table;
+        philosophers[i].rigth_fork = 1;
+        if (i == 0)
+            philosophers[i].left_fork = &philosophers[table->nbr_of_philos - 1].rigth_fork;
+        else
+            philosophers[i].left_fork = &philosophers[i - 1].rigth_fork;
+        i++;
+    }
+    return (philosophers);
+}
 
 int set_table(table_t *table, int nb_philos, int t_die, int t_eat, int t_sleep)
 {
@@ -39,15 +49,12 @@ int set_table(table_t *table, int nb_philos, int t_die, int t_eat, int t_sleep)
     table->time_to_die = t_die;
     table->time_to_eat = t_eat;
     table->time_to_sleep = t_sleep;
-    table->philosophers = malloc(sizeof(pthread_t) * nb_philos);
     return (0);
 }
 
-void *philo_routine(void *arg)
+void call_philos()
 {
-    int n = *(int *)arg;
-    printf("Philo %d just sited on the table\n", ++n);
-    return NULL;
+    
 }
 
 int main(int ac, char **av)
@@ -55,18 +62,10 @@ int main(int ac, char **av)
     (void)ac;
     (void)av;
     table_t table;
+    philo_t *philos;
+    
     set_table(&table, 2, 4, 2, 2);
-
-    for (int i = 0; i < 5; i++)
-    {
-       pthread_create(&table.philosophers[i], NULL, philo_routine, (void *)&i);
-       usleep(100);
-    }
-
-    for (int i = 0; i < 5; i++)
-    {
-        pthread_join(table.philosophers[i], NULL);
-    }
-    
-    
+    philos = created_philos(&table);
+    (void)philos;
+    return (0);   
 }
