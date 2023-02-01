@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/31 20:03:17 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:14:33 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # include <sys/time.h>
 # include <limits.h>
 
+typedef struct      philo_s
+{
+    int             id;
+    int             left_fork;
+    int             *right_fork;
+    struct table_s  *dinner_info;
+    int             meals_count;
+    pthread_mutex_t mutex_fork;
+    pthread_t       thread;
+}                   philo_t;
 
 typedef struct      table_s
 {
@@ -30,21 +40,11 @@ typedef struct      table_s
     int             time_to_die;
     int             time_to_sleep;
     int             nbr_of_meals;
-    pthread_mutex_t mutex_fork;
-
-    
-
+    int             start_dinner;
+    philo_t         *philosophers;
 }               table_t;
 
-typedef struct      philo_s
-{
-    int             id;
-    int             rigth_fork;
-    int             *left_fork;
-    int             nb_of_meals;
-    table_t         *dinner_info;
-    pthread_t       thread;
-}                   philo_t;
+
 
 int	    ft_atoi_v2(const char *str);
 void    eating(philo_t *philo);
