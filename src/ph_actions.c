@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ph_actions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/03 00:39:47 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/03 18:27:41 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void print_status(char *str, philo_t *philo)
     long int time;
     pthread_mutex_lock(&philo->dinner_info->mutex_print);
     time = get_time();
-    printf("%6ld Philo %d %s", (time - philo->dinner_info->start_dinner) / 1000, philo->id, str);
+    printf("|%6ld | Philo %d | %s", (time - philo->dinner_info->start_dinner) / 1000, philo->id, str);
     pthread_mutex_unlock(&philo->dinner_info->mutex_print);
 }
 
@@ -44,29 +44,30 @@ void eating(philo_t *philo)
         {
             pthread_mutex_lock(&philo->mutex_fork);
             *(philo)->right_fork = 1;
-            print_status("\033[32;47m🍴 Has taken a fork \033[0m\n", philo);
+            print_status("\033[32;47m🍴 Has taken a fork \033[0m |\n", philo);
             philo->left_fork = 1;
-            print_status("\033[35;47m🍴 Has taken a fork \033[0m\n", philo);
-            print_status("\033[30;42m🍝 Is eating        \033[0m\n", philo);
-            ft_usleep(philo->dinner_info->time_to_eat * 1000000);
+            print_status("\033[35;47m🍴 Has taken a fork \033[0m |\n", philo);
+            print_status("\033[30;42m🍝 Is eating        \033[0m |\n", philo);
+            ft_usleep(philo->dinner_info->time_to_eat * 1000);
             *(philo)->right_fork = 0;
             philo->left_fork = 0;
             pthread_mutex_unlock(&philo->mutex_fork);
-            usleep(150);
+            // usleep(250);
         }
 }
 
 void sleeping(philo_t *philo)
 {
     
-    print_status("\033[30;41m😴 Is sleeping      \033[0m\n", philo);
-    ft_usleep(philo->dinner_info->time_to_sleep * 1000000);
-    usleep(150);
+    print_status("\033[30;41m😴 Is sleeping      \033[0m |\n", philo);
+    ft_usleep(philo->dinner_info->time_to_sleep * 1000);
+    usleep(250);
 }
 
 void thinking(philo_t *philo)
 {
     
-    print_status("\033[34;43mis thinking\033[0m\n", philo);
-    ft_usleep(philo->dinner_info->time_to_sleep * 1000000);
+    print_status("\033[34;44m🤔 is thinking      \033[0m |\n", philo);
+    ft_usleep(philo->dinner_info->time_to_sleep * 1000);
+    usleep(250);
 }
