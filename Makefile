@@ -5,7 +5,9 @@ ph_actions.c\
 ph_call_philos.c\
 ph_create_philos.c\
 ph_main.c\
-ph_set_table.c
+ph_print_status.c\
+ph_set_table.c\
+ph_timers.c
 vpath %.c src
 OBJPATH = obj/
 SRCPATH = src/

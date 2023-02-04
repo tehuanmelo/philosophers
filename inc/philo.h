@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/03 23:19:54 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/04 08:37:38 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ int         set_table(table_t *table, int nb_philos, int t_die, int t_eat, int t
 void        create_philos(table_t *table);
 void        call_philos(philo_t *philosophers);
 
-int	        ft_atoi_v2(const char *str);
 void        eating(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
+
+int	        ft_atoi_v2(const char *str);
 long int    get_time();
+void        ft_usleep(long int start, long int end);
+void        print_status(char *str, philo_t *philo);
 
 # endif

@@ -6,36 +6,11 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/04 08:22:40 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/04 08:38:42 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-long int get_time()
-{
-    struct timeval time;
-
-    gettimeofday(&time, NULL);
-    return ((time.tv_sec * 1000000) + time.tv_usec);
-}
-
-void ft_usleep(long int start, long int end)
-{
-    start = get_time();
-    while (get_time() - start < end)
-        usleep(1);
-}
-
-void print_status(char *str, philo_t *philo)
-{
-    long int time;
-    pthread_mutex_lock(&philo->dinner_info->mutex_print);
-    time = get_time();
-    printf(" ---------------------------------------- \n");
-    printf("|%6ld | Philo %d | %s", (time - philo->dinner_info->start_dinner) / 1000, philo->id, str);
-    pthread_mutex_unlock(&philo->dinner_info->mutex_print);
-}
 
 void eating(philo_t *philo)
 {
