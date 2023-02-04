@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ph_call_philos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:38:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/03 19:06:44 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/04 08:11:10 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void *dinner_service(void *arg)
 {
     if (((philo_t *)arg)->id % 2 != 0)
+    {
         thinking(((philo_t *)arg));
+        usleep(250);
+    }
     while (1)
     {
         eating(((philo_t *)arg));
@@ -33,8 +36,8 @@ void call_philos(philo_t *philosophers)
     i = 0;
     while (i < philosophers->dinner_info->nbr_of_philos)
     {
-        usleep(500);
         pthread_create(&philosophers[i].thread, NULL, &dinner_service, (void *)&philosophers[i]);
+        usleep(100);
         i++;
     }
     i = 0;

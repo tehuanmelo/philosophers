@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/02 12:45:30 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/03 23:19:54 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ typedef struct      philo_s
     int             *right_fork;
     struct table_s  *dinner_info;
     int             meals_count;
-    pthread_mutex_t mutex_fork;
     pthread_t       thread;
+    pthread_mutex_t *right_mutex;
+    pthread_mutex_t left_mutex;
 }                   philo_t;
 
 typedef struct      table_s
