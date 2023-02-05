@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 12:04:46 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 15:32:13 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void        call_philos(philo_t *philosophers);
 void        eating(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
-void        philo_should_not_eat(philo_t *philo);
+void        should_eat(philo_t *philo);
 
 int	        ft_atoi_v2(const char *str);
 long int    get_time();
