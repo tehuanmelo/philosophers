@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/04 08:37:38 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 12:04:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,20 @@ typedef struct      table_s
     int             time_to_die;
     int             time_to_sleep;
     int             nbr_of_meals;
+    int             end_dinner;
     long int        start_dinner;
     pthread_mutex_t mutex_print;
     philo_t         *philosophers;
 }               table_t;
 
-int         set_table(table_t *table, int nb_philos, int t_die, int t_eat, int t_sleep);
+int         set_table(table_t *table, int nbr_philos, int t_die, int t_eat, int t_sleep, int nbr_meals);
 void        create_philos(table_t *table);
 void        call_philos(philo_t *philosophers);
 
 void        eating(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
+void        philo_should_not_eat(philo_t *philo);
 
 int	        ft_atoi_v2(const char *str);
 long int    get_time();

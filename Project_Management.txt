@@ -1,0 +1,8 @@
+- Routine
+    Philos eating thinking sleeping - Done
+    Philos number of meals - not
+- Death
+    check if any philo should die - not
+- Parsing
+    validate the user entry
+- Leaks
