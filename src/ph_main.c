@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 21:33:50 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 22:33:15 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int ac, char **av)
     (void)av;
     table_t table;
 
-    set_table(&table, 5, 0, 50, 50, 2);
+    set_table(&table, 5, 0, 50, 50, 5);
     create_philos(&table);
     call_philos(table.philosophers);
     

@@ -6,35 +6,18 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/05 21:37:26 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 22:40:50 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void end_dinner(table_t *table)
+int is_philo_full(philo_t *philo)
 {
-    int i;
-
-    i = -1;
-    while (--i < table->nbr_of_philos)
-    {
-        pthread_detach(table->philosophers[i].thread);
-        pthread_mutex_destroy(&table->philosophers[i].left_mutex);
-        pthread_mutex_destroy(&table->philosophers[i].stop_eating);
-
-    }
-    pthread_mutex_destroy(&table->mutex_print);
-    free((pthread_t *)table->philosophers);
-    table->end_dinner = 1;
-}
-
-int should_not_eat(philo_t *philo)
-{
-    if ((int)philo->meals_count == (int)philo->dinner_info->nbr_of_meals)
+    if (philo->meals_count == philo->dinner_info->nbr_of_meals)
     {
         if (++philo->dinner_info->philos_full == philo->dinner_info->nbr_of_philos)
-            end_dinner(philo->dinner_info);
+            philo->dinner_info->end_dinner = 1;
         pthread_mutex_lock(&philo->stop_eating);
         return 1;
     }
@@ -43,7 +26,7 @@ int should_not_eat(philo_t *philo)
 
 void eating(philo_t *philo)
 {
-    if (should_not_eat(philo))
+    if (is_philo_full(philo))
         pthread_mutex_lock(&philo->stop_eating);
     pthread_mutex_lock(&philo->left_mutex);
     print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
