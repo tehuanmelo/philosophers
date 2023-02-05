@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:38:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 12:07:19 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 21:33:55 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void call_philos(philo_t *philosophers)
         usleep(100);
         i++;
     }
-    i = 0;
-    while (i < philosophers->dinner_info->nbr_of_philos)
-    {
-        pthread_join(philosophers[i].thread, NULL);
-        i++;
-    }
+    // i = 0;
+    // while (i < philosophers->dinner_info->nbr_of_philos)
+    // {
+    //     pthread_join(philosophers[i].thread, NULL);
+    //     i++;
+    // }
 }

@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:33:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 11:30:02 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/05 20:33:59 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int set_table(table_t *table, int nbr_philos, int t_die, int t_eat, int t_sleep,
     table->time_to_sleep = t_sleep;
     table->nbr_of_meals = nbr_meals;
     table->start_dinner = get_time();
+    table->end_dinner = 0;
+    table->philos_full = 0;
     table->philosophers = malloc(sizeof(philo_t) * nbr_philos);
     if (!(table->philosophers))
         return (1);
