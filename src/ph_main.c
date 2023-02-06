@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 22:33:15 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/06 23:11:17 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ int main(int ac, char **av)
     (void)av;
     table_t table;
 
-    set_table(&table, 5, 0, 50, 50, 5);
+    if (ac != 5 && ac != 6)
+    {
+        printf("Invalid input\n");
+        return (1);
+    }
+    set_table(&table, ac, av);
     create_philos(&table);
     call_philos(table.philosophers);
-    
-    while (!table.end_dinner)
-        usleep(200);
+    // while (!table.end_dinner)
+    //     usleep(200);
     return (0);
 }

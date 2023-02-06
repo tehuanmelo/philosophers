@@ -6,33 +6,21 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/05 22:40:50 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/06 23:22:27 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int is_philo_full(philo_t *philo)
-{
-    if (philo->meals_count == philo->dinner_info->nbr_of_meals)
-    {
-        if (++philo->dinner_info->philos_full == philo->dinner_info->nbr_of_philos)
-            philo->dinner_info->end_dinner = 1;
-        pthread_mutex_lock(&philo->stop_eating);
-        return 1;
-    }
-    return 0;
-}
-
 void eating(philo_t *philo)
 {
-    if (is_philo_full(philo))
-        pthread_mutex_lock(&philo->stop_eating);
     pthread_mutex_lock(&philo->left_mutex);
-    print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
     pthread_mutex_lock((philo)->right_mutex);
+    is_philo_dead(philo);
+    print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
     print_status("\033[31;47m🍴 Has taken a fork \033[0m |\n", philo);
     print_status("\033[30;42m🍝 Is eating        \033[0m |\n", philo);
+    philo->last_meal_time = get_time();
     ft_usleep(get_time(), philo->dinner_info->time_to_eat * 1000);
     philo->meals_count++;
     pthread_mutex_unlock(&philo->left_mutex);
@@ -41,8 +29,7 @@ void eating(philo_t *philo)
 
 void sleeping(philo_t *philo)
 {
-
-    print_status("\033[30;41m😴 Is sleeping      \033[0m |\n", philo);
+    print_status("\033[37;45m😴 Is sleeping      \033[0m |\n", philo);
     ft_usleep(get_time(), philo->dinner_info->time_to_sleep * 1000);
 }
 

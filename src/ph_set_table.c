@@ -6,25 +6,29 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:33:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 20:33:59 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/06 23:32:16 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int set_table(table_t *table, int nbr_philos, int t_die, int t_eat, int t_sleep, int nbr_meals)
+int set_table(table_t *table, int ac, char **av)
 {
-    table->nbr_of_philos = nbr_philos;
-    table->time_to_die = t_die;
-    table->time_to_eat = t_eat;
-    table->time_to_sleep = t_sleep;
-    table->nbr_of_meals = nbr_meals;
+    table->nbr_of_philos = ft_atoi_v2(av[1]);
+    table->time_to_die = ft_atoi_v2(av[2]);
+    table->time_to_eat = ft_atoi_v2(av[3]);
+    table->time_to_sleep = ft_atoi_v2(av[4]);
+    if (ac == 6)
+        table->nbr_of_meals = ft_atoi_v2(av[5]);
+    else
+        table->nbr_of_meals = 0;
     table->start_dinner = get_time();
     table->end_dinner = 0;
     table->philos_full = 0;
-    table->philosophers = malloc(sizeof(philo_t) * nbr_philos);
+    table->philosophers = malloc(sizeof(philo_t) * table->nbr_of_philos);
     if (!(table->philosophers))
         return (1);
     pthread_mutex_init(&table->mutex_print, NULL);
+    pthread_mutex_init(&table->check_death, NULL);
     return (0);
 }

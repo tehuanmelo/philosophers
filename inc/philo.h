@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/05 20:33:20 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/06 23:32:01 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct      philo_s
     int             id;
     pthread_t       thread;
     int             meals_count;
+    long int        last_meal_time;
     struct table_s  *dinner_info;
     pthread_mutex_t *right_mutex;
     pthread_mutex_t left_mutex;
@@ -44,10 +45,11 @@ typedef struct      table_s
     int             end_dinner;
     long int        start_dinner;
     pthread_mutex_t mutex_print;
+    pthread_mutex_t check_death;
     philo_t         *philosophers;
 }               table_t;
 
-int         set_table(table_t *table, int nbr_philos, int t_die, int t_eat, int t_sleep, int nbr_meals);
+int         set_table(table_t *table, int ac, char **av);
 void        create_philos(table_t *table);
 void        call_philos(philo_t *philosophers);
 
@@ -59,5 +61,7 @@ int	        ft_atoi_v2(const char *str);
 long int    get_time();
 void        ft_usleep(long int start, long int end);
 void        print_status(char *str, philo_t *philo);
+int is_philo_full(philo_t *philo);
+void is_philo_dead(philo_t *philo);
 
 # endif
