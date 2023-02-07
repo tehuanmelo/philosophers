@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/07 20:14:15 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/07 22:35:43 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void eating(philo_t *philo)
 {
     pthread_mutex_lock(&philo->left_mutex);
     pthread_mutex_lock((philo)->right_mutex);
-    is_philo_full(philo);
     print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
     print_status("\033[31;47m🍴 Has taken a fork \033[0m |\n", philo);
     print_status("\033[30;42m🍝 Is eating        \033[0m |\n", philo);

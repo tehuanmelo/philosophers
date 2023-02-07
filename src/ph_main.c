@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/07 21:34:37 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/07 21:54:51 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int ac, char **av)
     call_philos(table.philosophers);
     check_death(&table);
     free(table.philosophers);
+    pthread_mutex_destroy(&table.philosophers[0].left_mutex);
     
     return (0);
 }
