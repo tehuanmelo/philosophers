@@ -8,6 +8,7 @@ ph_check_death.c\
 ph_main.c\
 ph_print_status.c\
 ph_set_table.c\
+ph_end_dinner.c\
 ph_timers.c
 vpath %.c src
 OBJPATH = obj/
@@ -15,8 +16,8 @@ SRCPATH = src/
 SRC = $(addprefix $(SRCPATH), $(SRCFILES))
 OBJ = $(patsubst $(SRCPATH)%.c, $(OBJPATH)%.o, $(SRC))
 CC = gcc
-# CFLAGS = -Wall -Werror -Wextra -pthread
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -pthread
+# CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 .SILENT:
 

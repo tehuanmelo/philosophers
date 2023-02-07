@@ -61,6 +61,7 @@ void        thinking(philo_t *philo);
 int         is_philo_full(philo_t *philo);
 int         is_philo_dead(philo_t *philo);
 void        check_death(table_t *table);
+void        end_dinner(table_t *table);
 
 int	        ft_atoi_v2(const char *str);
 long int    get_time();

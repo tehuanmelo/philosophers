@@ -42,7 +42,7 @@ void eating(philo_t *philo)
 {
     while (1)
     {
-        if (philo->left_fork == 0)
+        if (philo->left_fork == 0 && *philo->right_fork == 0)
         {
             pthread_mutex_lock((philo)->right_mutex);
             pthread_mutex_lock(&philo->left_mutex);
@@ -56,11 +56,11 @@ void eating(philo_t *philo)
             philo->meals_count++;
             philo->left_fork = 0;
             *philo->right_fork = 0;
-            pthread_mutex_unlock((philo)->right_mutex);
             pthread_mutex_unlock(&philo->left_mutex);
+            pthread_mutex_unlock((philo)->right_mutex);
             break;
         }
-        usleep(150);
+        usleep(200);
     }
 }
 
@@ -68,11 +68,11 @@ void sleeping(philo_t *philo)
 {
     print_status("\033[37;45m😴 Is sleeping      \033[0m |\n", philo);
     ft_usleep(get_time(), philo->dinner_info->time_to_sleep * 1000);
-    usleep(150);
+    usleep(200);
 }
 
 void thinking(philo_t *philo)
 {
     print_status("\033[37;44m🤔 is thinking      \033[0m |\n", philo);
-    usleep(150);
+    usleep(200);
 }

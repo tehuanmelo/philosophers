@@ -32,8 +32,7 @@ int main(int ac, char **av)
     create_philos(&table);
     call_philos(table.philosophers);
     check_death(&table);
-    free(table.philosophers);
-    pthread_mutex_destroy(&table.philosophers[0].left_mutex);
+    end_dinner(&table);
     
     return (0);
 }
