@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/06 23:32:01 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/07 20:13:33 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct      philo_s
     struct table_s  *dinner_info;
     pthread_mutex_t *right_mutex;
     pthread_mutex_t left_mutex;
-    pthread_mutex_t stop_eating;
 }                   philo_t;
 
 typedef struct      table_s
@@ -41,11 +40,12 @@ typedef struct      table_s
     int             time_to_die;
     int             time_to_sleep;
     int             nbr_of_meals;
-    int             philos_full;
     int             end_dinner;
     long int        start_dinner;
-    pthread_mutex_t mutex_print;
-    pthread_mutex_t check_death;
+    pthread_mutex_t print_mtx;
+    pthread_mutex_t is_dead_mtx;
+    pthread_mutex_t is_full_mtx;
+    pthread_mutex_t end_mtx;
     philo_t         *philosophers;
 }               table_t;
 
@@ -56,12 +56,13 @@ void        call_philos(philo_t *philosophers);
 void        eating(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
+int         is_philo_full(philo_t *philo);
+int         is_philo_dead(philo_t *philo);
+void        check_death(table_t *table);
 
 int	        ft_atoi_v2(const char *str);
 long int    get_time();
 void        ft_usleep(long int start, long int end);
 void        print_status(char *str, philo_t *philo);
-int is_philo_full(philo_t *philo);
-void is_philo_dead(philo_t *philo);
 
 # endif

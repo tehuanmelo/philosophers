@@ -4,6 +4,7 @@ ft_atoi_v2.c\
 ph_actions.c\
 ph_call_philos.c\
 ph_create_philos.c\
+ph_check_death.c\
 ph_main.c\
 ph_print_status.c\
 ph_set_table.c\

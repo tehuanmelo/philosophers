@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:35:29 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/06 23:26:14 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/07 19:42:21 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void create_philos(table_t *table)
         table->philosophers[i].meals_count = 0;
         table->philosophers[i].last_meal_time = 0;
         pthread_mutex_init(&table->philosophers[i].left_mutex, NULL);
-        pthread_mutex_init(&table->philosophers[i].stop_eating, NULL);
     }
 }
