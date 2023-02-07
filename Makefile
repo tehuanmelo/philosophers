@@ -15,8 +15,8 @@ SRCPATH = src/
 SRC = $(addprefix $(SRCPATH), $(SRCFILES))
 OBJ = $(patsubst $(SRCPATH)%.c, $(OBJPATH)%.o, $(SRC))
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pthread
-# CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+# CFLAGS = -Wall -Werror -Wextra -pthread
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 .SILENT:
 
