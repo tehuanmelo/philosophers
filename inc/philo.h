@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/07 22:51:25 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/08 20:38:15 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct      table_s
     int             time_to_sleep;
     int             nbr_of_meals;
     int             end_dinner;
+    int             nbr_of_philos_full;
     long int        start_dinner;
     pthread_mutex_t print_mtx;
     pthread_mutex_t is_dead_mtx;

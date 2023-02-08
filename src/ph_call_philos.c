@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:38:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/07 22:59:56 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/08 21:21:51 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 void *dinner_service(void *arg)
 {
     if (((philo_t *)arg)->id % 2 != 0)
+    {
         thinking(((philo_t *)arg));
+        usleep(250);
+    }
     while (!is_philo_full(((philo_t *)arg)))
     {
         eating(((philo_t *)arg));
