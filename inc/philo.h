@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/12 17:04:25 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 18:49:16 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int         set_table(table_t *table, int ac, char **av);
 void        create_philos(table_t *table);
 void        call_philos(philo_t *philosophers);
 
-void        eating(philo_t *philo);
+int         eating(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
-int         is_philo_full(philo_t *philo);
+void        is_philo_full(philo_t *philo);
 int         is_philo_dead(philo_t *philo);
 void        check_death(table_t *table);
 void        end_dinner(table_t *table);

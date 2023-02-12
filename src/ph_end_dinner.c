@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:36:55 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/07 22:41:23 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 18:56:55 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	end_dinner(table_t *table)
 {
 	int	i;
-
+	
+	i = -1;
+	while (++i < table->nbr_of_philos)
+		pthread_join(table->philosophers[i].thread, NULL);
     i = -1;
 	while (++i < table->nbr_of_philos)
 		pthread_mutex_destroy(&table->philosophers[i].left_mutex);

@@ -6,39 +6,24 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:38:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/12 17:08:17 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 18:37:02 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int is_philo_full(philo_t *philo)
-{
-    pthread_mutex_lock(&philo->dinner_info->is_full_mtx);
-    if (philo->dinner_info->nbr_of_meals && (philo->meals_count == philo->dinner_info->nbr_of_meals))
-    {
-        if (++philo->dinner_info->nbr_of_philos_full == philo->dinner_info->nbr_of_philos)
-        {
-            pthread_mutex_unlock(&philo->dinner_info->is_full_mtx);
-            pthread_mutex_lock(&philo->dinner_info->end_mtx);
-            philo->dinner_info->end_dinner = 1;
-            pthread_mutex_unlock(&philo->dinner_info->end_mtx);
-            return 1;
-        }
-        pthread_mutex_lock(&philo->dinner_info->is_full_mtx);
-        usleep(500);
-        return (1);
-    }
-    pthread_mutex_unlock(&philo->dinner_info->is_full_mtx);
-    return (0);
-}
+
 
 void *dinner_service(void *arg)
 {
-    while (!is_philo_full(((philo_t *)arg)))
+    while (!(((philo_t *)arg)->dinner_info->end_dinner))
     {
         thinking(((philo_t *)arg));
-        eating(((philo_t *)arg));
+        while (1)
+        {
+            if (eating(((philo_t *)arg)))
+                break;
+        }
         sleeping(((philo_t *)arg));
         
     }

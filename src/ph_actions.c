@@ -6,16 +6,46 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/12 17:03:45 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 19:15:06 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void eating(philo_t *philo)
+void is_philo_full(philo_t *philo)
 {
-    while (1)
+    pthread_mutex_lock(&philo->dinner_info->is_full_mtx);
+    if (philo->dinner_info->nbr_of_meals && (philo->meals_count == philo->dinner_info->nbr_of_meals))
     {
+        if (++philo->dinner_info->nbr_of_philos_full == philo->dinner_info->nbr_of_philos)
+        {
+            pthread_mutex_unlock(&philo->dinner_info->is_full_mtx);
+            pthread_mutex_lock(&philo->dinner_info->end_mtx);
+            philo->dinner_info->end_dinner = 1;
+            pthread_mutex_unlock(&philo->dinner_info->end_mtx);
+        }
+    }
+    pthread_mutex_unlock(&philo->dinner_info->is_full_mtx);
+}
+
+int is_philo_dead(philo_t *philo)
+{
+    pthread_mutex_lock(&philo->dinner_info->is_dead_mtx);
+    if (philo->last_meal_time && (get_time() - philo->last_meal_time) >= (philo->dinner_info->time_to_die * 1000))
+    {
+        pthread_mutex_unlock(&philo->dinner_info->is_dead_mtx);
+        print_status("\033[37;41m😵 is dead          \033[0m |\n", philo);
+        pthread_mutex_lock(&philo->dinner_info->end_mtx);
+        philo->dinner_info->end_dinner = 1;
+        pthread_mutex_unlock(&philo->dinner_info->end_mtx);
+        return (1);
+    }
+    pthread_mutex_unlock(&philo->dinner_info->is_dead_mtx);
+    return (0);
+}
+
+int eating(philo_t *philo)
+{
         if (*philo->right_fork == 0 && philo->left_fork == 0)
         {
             pthread_mutex_lock(&philo->left_mutex);
@@ -36,9 +66,10 @@ void eating(philo_t *philo)
             *philo->right_fork = 0;
             pthread_mutex_unlock(&philo->left_mutex);
             pthread_mutex_unlock((philo)->right_mutex);
-            break;
+            is_philo_full(philo);
+            return (1);
         }
-    }
+    return (0);
 }
 
 void sleeping(philo_t *philo)
