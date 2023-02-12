@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:32:57 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/08 22:15:42 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 17:02:41 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long int get_time()
 {
     struct timeval time;
-
+    
     gettimeofday(&time, NULL);
     return ((time.tv_sec * 1000000) + time.tv_usec);
 }

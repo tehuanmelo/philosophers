@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:38:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/08 22:18:02 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 17:08:17 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int is_philo_full(philo_t *philo)
         if (++philo->dinner_info->nbr_of_philos_full == philo->dinner_info->nbr_of_philos)
         {
             pthread_mutex_unlock(&philo->dinner_info->is_full_mtx);
+            pthread_mutex_lock(&philo->dinner_info->end_mtx);
             philo->dinner_info->end_dinner = 1;
+            pthread_mutex_unlock(&philo->dinner_info->end_mtx);
             return 1;
         }
         pthread_mutex_lock(&philo->dinner_info->is_full_mtx);
@@ -33,16 +35,11 @@ int is_philo_full(philo_t *philo)
 
 void *dinner_service(void *arg)
 {
-    if (((philo_t *)arg)->id % 2 != 0)
-    {
-        thinking(((philo_t *)arg));
-        usleep(250);
-    }
     while (!is_philo_full(((philo_t *)arg)))
     {
+        thinking(((philo_t *)arg));
         eating(((philo_t *)arg));
         sleeping(((philo_t *)arg));
-        thinking(((philo_t *)arg));
         
     }
     return (NULL);
@@ -56,7 +53,7 @@ void call_philos(philo_t *philosophers)
     while (i < philosophers->dinner_info->nbr_of_philos)
     {
         pthread_create(&philosophers[i].thread, NULL, &dinner_service, (void *)&philosophers[i]);
-        usleep(100);
+        usleep(250);
         i++;
     }
 }
