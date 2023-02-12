@@ -1,15 +1,16 @@
 NAME = philo
 SRCFILES =\
+actions.c\
+check_death.c\
+create_philos.c\
+end_dinner.c\
 ft_atoi_v2.c\
-ph_actions.c\
-ph_call_philos.c\
-ph_create_philos.c\
-ph_check_death.c\
-ph_main.c\
-ph_print_status.c\
-ph_set_table.c\
-ph_end_dinner.c\
-ph_timers.c
+init_join_threads.c\
+main.c\
+philo_routine.c\
+print_status.c\
+set_table.c\
+timers.c
 vpath %.c src
 OBJPATH = obj/
 SRCPATH = src/

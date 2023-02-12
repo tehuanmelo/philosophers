@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:35:29 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/12 16:13:48 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/12 22:46:18 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void create_philos(table_t *table)
     {
         table->philosophers[i].id = i + 1;
         table->philosophers[i].left_fork = 0;
-        table->philosophers[i].philo_is_eating = 0;
         if (i == 0)
         {
             table->philosophers[i].right_fork = &table->philosophers[table->nbr_of_philos - 1].left_fork;
