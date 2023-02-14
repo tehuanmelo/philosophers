@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ph_philo_routine.c                                 :+:      :+:    :+:   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:03:49 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/12 23:04:54 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/14 22:57:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void *philo_routine(void *arg)
 {
-    while (!(((philo_t *)arg)->dinner_info->end_dinner))
+    // If there is at least one philo and end_dinner flag is 0 keep looping
+    while (((philo_t *)arg)->dinner_info->nbr_of_philos && !((philo_t *)arg)->dinner_info->end_dinner)
     {
         thinking(((philo_t *)arg));
+        // If number of philos is 1 it can't eat with just one fork available
+        if (((philo_t *)arg)->dinner_info->nbr_of_philos == 1)
+            break;
         while (1)
         {
+            // The philo will be waiting inside the loop until the forks become available to eat
             if (eating(((philo_t *)arg)))
                 break;
         }

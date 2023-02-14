@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ph_actions.c                                       :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/12 22:50:01 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/14 22:41:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void is_philo_full(philo_t *philo)
 
 int is_philo_dead(philo_t *philo)
 {
-    if (philo->last_meal_time && (get_time() - philo->last_meal_time) >= (philo->dinner_info->time_to_die * 1000))
+    if ((get_time() - philo->last_meal_time) >= (philo->dinner_info->time_to_die * 1000))
     {
         print_status("\033[37;41m😵 is dead          \033[0m |\n", philo);
         pthread_mutex_lock(&philo->dinner_info->end_mtx);
