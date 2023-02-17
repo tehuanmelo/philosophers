@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 20:01:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/14 22:32:31 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 13:48:28 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void check_death(table_t *table)
         int i = -1;
         while (!table->end_dinner && (++i < table->nbr_of_philos))
         {
-            if (table->nbr_of_meals && (table->philosophers[i].meals_count == table->nbr_of_meals))
+            if (table->nbr_of_meals && (table->philosophers[i].meals_count >= table->nbr_of_meals))
                 break;
             if (is_philo_dead(&table->philosophers[i]))
                 break;

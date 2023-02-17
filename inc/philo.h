@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/12 23:05:17 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 13:56:08 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int	        ft_atoi_v2(const char *str);
 long int    get_time();
 void        ft_usleep(long int start, long int end);
 void        print_status(char *str, philo_t *philo);
+int         check_input(char **input);
 
 # endif

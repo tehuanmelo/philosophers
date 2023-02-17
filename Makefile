@@ -10,14 +10,15 @@ main.c\
 philo_routine.c\
 print_status.c\
 set_table.c\
-timers.c
+timers.c\
+check_input.c
 vpath %.c src
 OBJPATH = obj/
 SRCPATH = src/
 SRC = $(addprefix $(SRCPATH), $(SRCFILES))
 OBJ = $(patsubst $(SRCPATH)%.c, $(OBJPATH)%.o, $(SRC))
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -pthread
 # CFLAGS = -Wall -Werror -Wextra -pthread -g
 # CFLAGS = -Wall -Werror -Wextra -pthread -g3 -fsanitize=address
 

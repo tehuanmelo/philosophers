@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:03:49 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/14 22:57:46 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 14:34:13 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void *philo_routine(void *arg)
             // The philo will be waiting inside the loop until the forks become available to eat
             if (eating(((philo_t *)arg)))
                 break;
+            usleep(150);
         }
         sleeping(((philo_t *)arg));
          

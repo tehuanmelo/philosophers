@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/14 22:40:31 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 14:28:46 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ int main(int ac, char **av)
     {
         printf("Invalid input\n");
         return (1);
+    }
+    else
+    {
+        if(check_input(av))
+        {
+            printf("Invalid input\n");
+            return (1);
+        }
     }
     set_table(&table, ac, av);
     create_philos(&table);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/14 22:41:46 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 14:45:55 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int is_philo_dead(philo_t *philo)
 
 int eating(philo_t *philo)
 {
-        if (*philo->right_fork == 0 && philo->left_fork == 0)
+        pthread_mutex_lock(&philo->dinner_info->end_mtx);
+        pthread_mutex_unlock(&philo->dinner_info->end_mtx);
+        if (*philo->right_fork == 0)
         {
-            pthread_mutex_lock(&philo->left_mutex);
             pthread_mutex_lock((philo)->right_mutex);
+            pthread_mutex_lock(&philo->left_mutex);
             philo->left_fork = 1;
             *philo->right_fork = 1;
             print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
@@ -54,8 +56,8 @@ int eating(philo_t *philo)
             philo->meals_count++;
             philo->left_fork = 0;
             *philo->right_fork = 0;
-            pthread_mutex_unlock(&philo->left_mutex);
             pthread_mutex_unlock((philo)->right_mutex);
+            pthread_mutex_unlock(&philo->left_mutex);
             is_philo_full(philo);
             return (1);
         }
