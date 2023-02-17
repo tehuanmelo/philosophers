@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_philos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:35:29 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/14 19:35:28 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/17 18:40:02 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void create_philos(table_t *table)
         table->philosophers[i].meals_count = 0;
         table->philosophers[i].last_meal_time = get_time();
         pthread_mutex_init(&table->philosophers[i].left_mutex, NULL);
+        pthread_mutex_init(&table->philosophers[i].meals_count_mtx, NULL);
     }
 }

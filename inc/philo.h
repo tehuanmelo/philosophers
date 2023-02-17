@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/17 13:56:08 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:39:50 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct      philo_s
     pthread_t       thread;
     pthread_mutex_t *right_mutex;
     pthread_mutex_t left_mutex;
+    pthread_mutex_t meals_count_mtx;
 }                   philo_t;
 
 typedef struct      table_s

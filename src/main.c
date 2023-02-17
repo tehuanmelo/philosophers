@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:05:07 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/17 14:28:46 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:20:40 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ number_of_philosophers time_to_die time_to_eat time_to_sleep
 
 int main(int ac, char **av)
 {
-    (void)ac;
-    (void)av;
     table_t table;
 
     if (ac != 5 && ac != 6)
@@ -42,6 +40,5 @@ int main(int ac, char **av)
     check_death(&table);
     join_threads(&table);
     end_dinner(&table);
-    
     return (0);
 }
