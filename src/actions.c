@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:40:13 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/17 19:34:56 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:18:49 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int eating(philo_t *philo)
         if (*philo->right_fork == 0)
         {
             pthread_mutex_lock((philo)->right_mutex);
-            philo->left_fork = 1;
             *philo->right_fork = 1;
+            philo->left_fork = 1;
             print_status("\033[30;47m🍴 Has taken a fork \033[0m |\n", philo);
             print_status("\033[31;47m🍴 Has taken a fork \033[0m |\n", philo);
             print_status("\033[30;42m🍝 Is eating        \033[0m |\n", philo);
@@ -61,9 +61,9 @@ int eating(philo_t *philo)
             ft_usleep(get_time(), philo->dinner_info->time_to_eat * 1000);
             philo->left_fork = 0;
             *philo->right_fork = 0;
+            is_philo_full(philo);
             pthread_mutex_unlock((philo)->right_mutex);
             pthread_mutex_unlock(&philo->left_mutex);
-            is_philo_full(philo);
             return (1);
         }
         pthread_mutex_unlock(&philo->left_mutex);
