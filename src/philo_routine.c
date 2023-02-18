@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:03:49 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/17 19:20:18 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:26:56 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void *philo_routine(void *arg)
         {
             if (eating(((philo_t *)arg)))
                 break;
-            usleep(150);
         }
         sleeping(((philo_t *)arg));
          
