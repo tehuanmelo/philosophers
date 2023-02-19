@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:03:49 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/18 15:26:56 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:11:21 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../inc/philo.h"
+#include "../inc/philo.h"
 
 void *philo_routine(void *arg)
 {
-    while (((philo_t *)arg)->dinner_info->nbr_of_philos)
+    while (1)
     {
-        if(((philo_t *)arg)->dinner_info->end_dinner)
+        pthread_mutex_lock(&((philo_t *)arg)->dinner_info->end_mtx);
+        if (((philo_t *)arg)->dinner_info->end_dinner)
+        {
+            pthread_mutex_unlock(&((philo_t *)arg)->dinner_info->end_mtx);
             break;
+        }
+        pthread_mutex_unlock(&((philo_t *)arg)->dinner_info->end_mtx);
         thinking(((philo_t *)arg));
         if (((philo_t *)arg)->dinner_info->nbr_of_philos == 1)
             break;
@@ -27,7 +32,6 @@ void *philo_routine(void *arg)
                 break;
         }
         sleeping(((philo_t *)arg));
-         
     }
     return (NULL);
 }
