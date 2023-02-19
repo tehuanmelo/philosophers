@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:03:49 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/19 16:11:21 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/19 18:03:08 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void *philo_routine(void *arg)
         }
         pthread_mutex_unlock(&((philo_t *)arg)->dinner_info->end_mtx);
         thinking(((philo_t *)arg));
-        if (((philo_t *)arg)->dinner_info->nbr_of_philos == 1)
+        if (((philo_t *)arg)->dinner_info->nbr_of_philos == 1 || ((philo_t *)arg)->dinner_info->nbr_of_meals == 0)
             break;
         while (1)
         {
-            if (eating(((philo_t *)arg)))
+            if (check_forks(((philo_t *)arg)))
                 break;
         }
         sleeping(((philo_t *)arg));

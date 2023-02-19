@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:33:24 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/17 18:39:50 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:49:25 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct      philo_s
     pthread_t       thread;
     pthread_mutex_t *right_mutex;
     pthread_mutex_t left_mutex;
-    pthread_mutex_t meals_count_mtx;
 }                   philo_t;
 
 typedef struct      table_s
@@ -59,11 +58,9 @@ void        init_threads(philo_t *philosophers);
 void        join_threads(table_t *table);
 void        *philo_routine(void *arg);
 
-int         eating(philo_t *philo);
+int         check_forks(philo_t *philo);
 void        sleeping(philo_t *philo);
 void        thinking(philo_t *philo);
-void        is_philo_full(philo_t *philo);
-int         is_philo_dead(philo_t *philo);
 void        check_death(table_t *table);
 void        end_dinner(table_t *table);
 

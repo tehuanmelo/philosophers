@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:53:39 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/17 16:08:03 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:40:10 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	check_input(char **input)
 		{
 			if (check_zero(input[5]))
 				return (1);
+			return (0);
 		}
 	}
 	return (0);

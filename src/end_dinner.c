@@ -6,13 +6,11 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:36:55 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/14 22:48:59 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/19 18:23:34 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-
 
 void	end_dinner(table_t *table)
 {
