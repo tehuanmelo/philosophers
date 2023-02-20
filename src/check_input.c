@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:53:39 by tde-melo          #+#    #+#             */
-/*   Updated: 2023/02/19 17:40:10 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/20 18:02:13 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_input(char **input)
 	if (ft_atoi_v2(input[1]) < 1)
 		return (1);
 	else if (ft_atoi_v2(input[2]) < 60 || ft_atoi_v2(input[3]) < 60
-			|| ft_atoi_v2(input[4]) < 60)
+		|| ft_atoi_v2(input[4]) < 60)
 		return (1);
 	else if (input[5] && input[5][0] == '\0')
 		return (1);

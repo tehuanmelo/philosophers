@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   end_dinner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:36:55 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/02/19 18:23:34 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/02/20 18:09:30 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	end_dinner(table_t *table)
+void	end_dinner(t_table *table)
 {
 	int	i;
-	
-    i = -1;
+
+	i = -1;
 	while (++i < table->nbr_of_philos)
 		pthread_mutex_destroy(&table->philosophers[i].left_mutex);
 	pthread_mutex_destroy(&table->end_mtx);
