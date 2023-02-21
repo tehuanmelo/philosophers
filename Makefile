@@ -14,9 +14,7 @@ timers.c\
 check_input.c
 vpath %.c src
 OBJPATH = obj/
-SRCPATH = src/
-SRC = $(addprefix $(SRCPATH), $(SRCFILES))
-OBJ = $(patsubst $(SRCPATH)%.c, $(OBJPATH)%.o, $(SRC))
+OBJ = $(patsubst %.c, $(OBJPATH)%.o, $(SRCFILES))
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pthread
 
